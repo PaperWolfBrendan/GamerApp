@@ -11,7 +11,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import Button from '@mui/material/Button';
 
+
+const pages = ['Backlog', 'Playing', 'Completed', 'Retired'];
 
 function Nav() {
     const [auth, setAuth] = useState(false);
@@ -42,9 +45,24 @@ function Nav() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Games
+                    <Typography variant="h5"
+                        noWrap
+                        component="a" sx={{
+                            mr: 3,
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}>
+                        Gamer App
                     </Typography>
+                    <Box justifyContent="flex-start" sx={{ display: 'inline-flex', flexDirection: 'row', flexGrow: 1 }}>
+                        {pages.map((page) =>
+                            <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
+                                {page}
+                            </Button>
+                        )}
+                    </Box>
                     {/* Only Displays if logged in */}
                     {auth && (
                         <div>
